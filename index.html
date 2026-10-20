@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parvati ❤️ Gautam — Wedding Coming Soon</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blush-pink: #fde2e4;
+            --rose-gold: #b76e79;
+            --champagne: #f7e7ce;
+            --gold: #d4af37;
+            --deep-rose: #8a4b55;
+            --cream: #fffdfa;
+            --white: #ffffff;
+            --text-dark: #4a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* --- Background Elements --- */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--rose-gold);
+            opacity: 0.6;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .petal {
+            position: absolute;
+            background: var(--blush-pink);
+            border-radius: 150% 0 150% 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translate(0, -10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translate(100px, 110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Header/Nav --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+            background: rgba(255, 253, 250, 0.8);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--deep-rose);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255,253,250,0.6), rgba(255,253,250,0.6)),
+                        url('https://images.unsplash.com/photo-1519741497674-6f284f85a667?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero-frame {
+            border: 3px double var(--gold);
+            padding: 40px;
+            position: relative;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero-frame::before, .hero-frame::after {
+            content: '✿';
+            position: absolute;
+            color: var(--gold);
+            font-size: 2rem;
+        }
+        .hero-frame::before { top: -15px; left: -15px; }
+        .hero-frame::after { bottom: -15px; right: -15px; }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 10px;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1s;
+        }
+
+        .hero .main-title {
+            font-size: 2rem;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.5s;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 2s;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 2.5s;
+        }
+
+        .cta-btn:hover {
+            background: var(--deep-rose);
+            transform: scale(1.05);
+        }
+
+        /* --- Countdown Section --- */
+        .countdown-section {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: var(--blush-pink);
+        }
+
+        .countdown-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--deep-rose);
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-box {
+            background: var(--white);
+            padding: 20px;
+            min-width: 120px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--champagne);
+        }
+
+        .timer-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .timer-box label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--deep-rose);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-card:hover {
+            transform: rotate(2deg) scale(1.02);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            margin-top: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: var(--deep-rose);
+        }
+
+        /* --- Timeline Section --- */
+        .timeline-section {
+            padding: 100px 20px;
+            background: var(--champagne);
+            position: relative;
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--deep-rose);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--gold);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.6s all ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; text-align: left; }
+
+        .timeline-item::after {
+            content: '❤️';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            top: 15px;
+            z-index: 1;
+            font-size: 20px;
+        }
+
+        .timeline-item.right::after { left: -17px; }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--blush-pink);
+        }
+
+        .timeline-content h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        /* --- Letters Section --- */
+        .letters-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .letters-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--deep-rose);
+        }
+
+        .letters-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .letter-card {
+            width: 300px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .letter-inner {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .letter-card.open .letter-inner {
+            transform: rotateY(180deg);
+        }
+
+        .letter-front, .letter-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .letter-front {
+            background: var(--blush-pink);
+            border: 2px dashed var(--rose-gold);
+        }
+
+        .letter-front .envelope-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .letter-back {
+            background: white;
+            transform: rotateY(180deg);
+            text-align: left;
+            justify-content: flex-start;
+            border: 1px solid var(--champagne);
+        }
+
+        .letter-back h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+        }
+
+        .letter-back p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* --- Invitation Section --- */
+        .invitation-section {
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .invitation-card {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 60px;
+            text-align: center;
+            border: 15px double var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease-in;
+            position: relative;
+        }
+
+        .invitation-card h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .invitation-card h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+
+        .invitation-card .invite-text {
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .invitation-details {
+            margin: 30px 0;
+            line-height: 2;
+            font-weight: 600;
+        }
+
+        /* --- Music Toggle --- */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--gold);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .music-control:hover { transform: scale(1.1); }
+
+        /* --- Footer --- */
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            background: var(--deep-rose);
+            color: white;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-frame { padding: 20px; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left !important; }
+            .timeline-item::after { left: 15px !important; }
+            .timeline-item.right { left: 0; }
+            .invitation-card { padding: 30px; }
+            .invitation-card h2 { font-size: 2rem; }
+        }
+
+        /* Modal for Gallery */
+        #image-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+        #image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles-container" id="particles"></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#story">Our Story</a>
+        <a href="#letters">Letters</a>
+        <a href="#invitation">Invitation</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-frame">
+            <h3>Two Hearts, One Beautiful Journey</h3>
+            <h1>PARVATI ❤️ GAUTAM</h1>
+            <div class="main-title">Our Wedding Is Coming Soon</div>
+            <p>A beautiful new chapter of our forever is about to begin.</p>
+            <a href="#countdown" class="cta-btn">Explore Our Love Story</a>
+        </div>
+    </section>
+
+    <section class="countdown-section" id="countdown">
+        <h2>Counting Down to Forever</h2>
+        <div class="timer-container">
+            <div class="timer-box">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="timer-box">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="timer-box">
+                <span id="minutes">00</span>
+                <label>Minutes</label>
+            </div>
+            <div class="timer-box">
+                <span id="seconds">00</span>
+                <label>Seconds</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2>Our Beautiful Moments</h2>
+        <div class="gallery-grid">
+            <!-- Photo 1 -->
+            <div class="photo-card" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1583939006573-7d77b596255d?auto=format&fit=crop&q=80&w=600" alt="Couple Photo">
+                <div class="photo-caption">Every moment with you is special.</div>
+            </div>
+            <!-- Photo 2 -->
+            <div class="photo-card" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600" alt="Couple Photo">
+                <div class="photo-caption">My favourite place is beside you.</div>
+            </div>
+            <!-- Photo 3 -->
+            <div class="photo-card" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1522673607200-275075797452?auto=format&fit=crop&q=80&w=600" alt="Couple Photo">
+                <div class="photo-caption">Together is a beautiful place to be.</div>
+            </div>
+            <!-- Photo 4 -->
+            <div class="photo-card" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1465495910483-3778785b308d?auto=format&fit=crop&q=80&w=600" alt="Couple Photo">
+                <div class="photo-caption">Our best chapter is yet to come.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section" id="story">
+        <h2>Our Love Story</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>The Beginning</h3>
+                    <p>Where our beautiful story started with a simple hello and a spark that changed everything.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>The First Memories</h3>
+                    <p>Long talks, shared dreams, and moments that became unforgettable pieces of our heart.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Growing Together</h3>
+                    <p>Building a foundation of love, trust, and an understanding that only grows deeper with time.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>The Special Question</h3>
+                    <p>The moment we decided that "me" and "you" would forever become "us".</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Wedding Coming Soon</h3>
+                    <p>And now, the most magical chapter of all is about to begin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="letters-section" id="letters">
+        <h2>Letters From the Heart</h2>
+        <div class="letters-grid">
+            <!-- Letter 1 -->
+            <div class="letter-card" onclick="this.classList.toggle('open')">
+                <div class="letter-inner">
+                    <div class="letter-front">
+                        <div class="envelope-icon">✉️</div>
+                        <p class="cursive">To My Dearest Parvati</p>
+                        <small>(Click to open)</small>
+                    </div>
+                    <div class="letter-back">
+                        <h3>Dearest Parvati,</h3>
+                        <p>You make ordinary moments feel extraordinary. Every smile, every conversation, and every memory with you makes life more beautiful. I look forward to a lifetime of love, laughter, and togetherness.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Letter 2 -->
+            <div class="letter-card" onclick="this.classList.toggle('open')">
+                <div class="letter-inner">
+                    <div class="letter-front">
+                        <div class="envelope-icon">✉️</div>
+                        <p class="cursive">To My Beloved Gautam</p>
+                        <small>(Click to open)</small>
+                    </div>
+                    <div class="letter-back">
+                        <h3>Beloved Gautam,</h3>
+                        <p>You are a beautiful part of my story and a reason for so many smiles. With every passing day, I look forward to creating new memories and building a future filled with love and happiness.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Letter 3 -->
+            <div class="letter-card" onclick="this.classList.toggle('open')">
+                <div class="letter-inner">
+                    <div class="letter-front">
+                        <div class="envelope-icon">✉️</div>
+                        <p class="cursive">Our Forever Begins Soon</p>
+                        <small>(Click to open)</small>
+                    </div>
+                    <div class="letter-back">
+                        <h3>Our Forever,</h3>
+                        <p>Two hearts, two dreams, and one beautiful future. Soon, we will begin a new chapter together, surrounded by love, blessings, and happiness. Our forever is just around the corner.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="invitation-section" id="invitation">
+        <div class="invitation-card">
+            <h4>Together With Our Families</h4>
+            <h2>PARVATI & GAUTAM</h2>
+            <p class="invite-text cursive">Invite you to celebrate the beginning of our forever.</p>
+            <div class="invitation-details">
+                <p>📅 Date: [Insert Date Here]</p>
+                <p>⏰ Time: [Insert Time Here]</p>
+                <p>📍 Venue: [Insert Venue Name]</p>
+                <p>🏙️ City: [Insert City Name]</p>
+            </div>
+            <p class="cursive" style="color: var(--gold); font-size: 1.5rem;">Save the Date!</p>
+        </div>
+    </section>
+
+    <div style="height: 20vh; display: flex; justify-content: center; align-items: center; text-align: center; background: var(--cream);">
+        <h2 class="cursive" style="font-size: 3rem; color: var(--deep-rose);">And So, Our Forever Begins...</h2>
+    </div>
+
+    <footer>
+        <p>Made with Love for Parvati & Gautam ❤️</p>
+    </footer>
+
+    <div class="music-control" id="musicToggle">
+        <span>🎵</span>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="image-modal" onclick="this.style.display='none'">
+        <img id="modal-img" src="" alt="Full Screen">
+    </div>
+
+    <script>
+        // --- 1. Countdown Timer ---
+        // CHANGE THIS DATE: Set your wedding date here
+        const weddingDate = new Date("December 31, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                document.querySelector(".countdown-section h2").innerText = "Our Forever Has Begun!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 2. Particle Effects (Hearts & Petals) ---
+        const particlesContainer = document.getElementById('particles');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+            particlesContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.width = Math.random() * 10 + 10 + 'px';
+            petal.style.height = petal.style.width;
+            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+            particlesContainer.appendChild(petal);
+            setTimeout(() => petal.remove(), 10000);
+        }
+
+        setInterval(createHeart, 500);
+        setInterval(createPetal, 800);
+
+        // --- 3. Scroll Animations ---
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
+
+        // --- 4. Gallery Modal ---
+        function openModal(card) {
+            const img = card.querySelector('img').src;
+            document.getElementById('modal-img').src = img;
+            document.getElementById('image-modal').style.display = 'flex';
+        }
+
+        // --- 5. Music Control ---
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        musicBtn.onclick = () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerHTML = '<span>🎵</span>';
+            } else {
+                music.play().catch(e => console.log("Autoplay blocked"));
+                musicBtn.innerHTML = '<span>⏸️</span>';
+            }
+            isPlaying = !isPlaying;
+        };
+    </script>
+</body>
+</html>
